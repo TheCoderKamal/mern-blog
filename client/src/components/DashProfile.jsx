@@ -165,9 +165,9 @@ export default function DashProfile() {
     }
   };
   return (
-    <div className='max-w-lg mx-auto p-3 w-full'>
-      <h1 className='my-7 text-center font-semibold text-3xl'>Profile</h1>
-      <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
+    <div className='max-w-lg mx-auto p-3 w-full flex flex-col justify-center'>
+      <h1 className='mb-7 text-center font-semibold text-3xl'>Profile</h1>
+      <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
         <input
           type='file'
           accept='image/*'
