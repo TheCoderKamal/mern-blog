@@ -101,62 +101,81 @@ export default function Search() {
   };
 
   return (
-    <div className='flex flex-col md:flex-row'>
-      <div className='p-7 border-b md:border-r md:min-h-screen border-gray-500'>
-        <form className='flex flex-col gap-8' onSubmit={handleSubmit}>
-          <div className='flex   items-center gap-2'>
-            <label className='whitespace-nowrap font-semibold'>
-              Search Term:
-            </label>
-            <TextInput
-              placeholder='Search...'
-              id='searchTerm'
-              type='text'
-              value={sidebarData.searchTerm}
-              onChange={handleChange}
-            />
+    <div className="flex flex-col md:flex-row">
+      <div className="p-7 border-b md:border-r md:min-h-screen border-gray-500">
+        <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
+          <div className="flex items-center gap-3 ">
+            <div className="flex-1 items-center w-[120px]">
+              <label className="whitespace-nowrap font-semibold flex justify-end">
+                Search Term :
+              </label>
+            </div>
+
+            <div className="flex-2 w-[150px]">
+              <TextInput
+                placeholder="Search..."
+                id="searchTerm"
+                type="text"
+                value={sidebarData.searchTerm}
+                onChange={handleChange}
+              />
+            </div>
           </div>
-          <div className='flex items-center gap-2'>
-            <label className='font-semibold'>Sort:</label>
-            <Select onChange={handleChange} value={sidebarData.sort} id='sort'>
-              <option value='desc'>Latest</option>
-              <option value='asc'>Oldest</option>
-            </Select>
+          <div className="flex items-center gap-3">
+            <div className="flex-1 items-center w-[120px]">
+              <label className="font-semibold flex justify-end">Sort :</label>
+            </div>
+            <div className="flex-2 w-[150px]">
+              <Select
+                onChange={handleChange}
+                value={sidebarData.sort}
+                id="sort"
+              >
+                <option value="desc">Latest</option>
+                <option value="asc">Oldest</option>
+              </Select>
+            </div>
           </div>
-          <div className='flex items-center gap-2'>
-            <label className='font-semibold'>Category:</label>
-            <Select
-              onChange={handleChange}
-              value={sidebarData.category}
-              id='category'
-            >
-              <option value='uncategorized'>Uncategorized</option>
-              <option value='reactjs'>React.js</option>
-              <option value='nextjs'>Next.js</option>
-              <option value='javascript'>JavaScript</option>
-            </Select>
+          <div className="flex items-center gap-3">
+            <div className="flex-1 items-center w-[120px]">
+              <label className="font-semibold flex justify-end">
+                Category :
+              </label>
+            </div>
+            <div className="flex-2 w-[150px]">
+              <Select
+                onChange={handleChange}
+                value={sidebarData.category}
+                id="category"
+              >
+                <option value="uncategorized">Uncategorized</option>
+                <option value="reactjs">React.js</option>
+                <option value="nextjs">Next.js</option>
+                <option value="javascript">JavaScript</option>
+              </Select>
+            </div>
           </div>
-          <Button type='submit' outline gradientDuoTone='purpleToPink'>
+          <Button type="submit" outline gradientDuoTone="purpleToPink">
             Apply Filters
           </Button>
         </form>
       </div>
-      <div className='w-full'>
-        <h1 className='text-3xl font-semibold sm:border-b border-gray-500 p-3 mt-5 '>
+      <div className="w-full">
+        <h1 className="text-3xl font-semibold sm:border-b border-gray-500 p-3 mt-5 ">
           Posts results:
         </h1>
-        <div className='p-7 flex flex-wrap gap-4'>
+        <div className="p-7 flex flex-wrap gap-4">
           {!loading && posts.length === 0 && (
-            <p className='text-xl text-gray-500'>No posts found.</p>
+            <p className="text-xl text-gray-500">No posts found.</p>
           )}
-          {loading && <p className='text-xl text-gray-500'>Loading...</p>}
+          {loading && <p className="text-xl text-gray-500">Loading...</p>}
           {!loading &&
             posts &&
             posts.map((post) => <PostCard key={post._id} post={post} />)}
           {showMore && (
             <button
               onClick={handleShowMore}
-              className='text-teal-500 text-lg hover:underline p-7 w-full'
+              className="text-teal-500 text-lg hover:underline p-7 w-full"
             >
               Show More
             </button>
